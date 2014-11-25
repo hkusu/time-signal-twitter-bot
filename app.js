@@ -35,7 +35,7 @@ var C = new CronJob({
 });
 
 function tweet(){
-  var message = moment().format("現在、MM月DD日 HH時mm分です。");
+  var message = moment().utc().add('h', 9).format("現在、MM月DD日 HH時mm分です。");
   console.log(message);
 
   T.post('statuses/update', { status: message }, function(err, data, response) {

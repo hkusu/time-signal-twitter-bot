@@ -1,0 +1,13 @@
+{
+  "name": "twibot",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "^4.10.4"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

@@ -1,4 +1,3 @@
-
 var express = require('express');
 var app = express();
 var http = require('http');
@@ -40,24 +39,17 @@ function tweet(){
   console.log(message);
 
   T.post('statuses/update', { status: message }, function(err, data, response) {
-    console.log('Tweet！');
+    console.log('Tweet!');
   });
 }
 
+// Heroku が眠らないように、10分ごとに自身に HTTP リクエストを発行
 new CronJob({
-  cronTime: '*/5 * * * * *',
+  cronTime: '0 * * * * *',
   onTick: function () {
-
-    //var req = http.get('http://localhost:5000', function(res) {
-    var req = http.get('http://localhost:' + app.get('port'), function(res) {
-      res.setEncoding('utf8');
-      res.on('data', function(str) {
-        console.log(str);
-      });
+    http.get('http://localhost:' + app.get('port'), function() {
     });
-
-    console.log('http//localhost:' + app.get('port'));
-
+    console.log('Request to http//localhost:' + app.get('port'));
   },
   start: true
 });

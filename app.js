@@ -45,7 +45,7 @@ function tweet(){
 
 // Heroku が眠らないように、10分ごとに自身に HTTP リクエストを発行
 new CronJob({
-  cronTime: '0 * * * * *',
+  cronTime: '0 */10 * * * *',
   onTick: function () {
     http.get('http://localhost:' + app.get('port'), function() {
     });

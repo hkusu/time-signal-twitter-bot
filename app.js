@@ -1,6 +1,7 @@
 
 var express = require('express');
 var app = express();
+var http = require('http');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -26,7 +27,7 @@ var T = new Twit({
 
 var cronTime = '0 0 * * * *';
 
-var C = new CronJob({
+new CronJob({
   cronTime: cronTime,
   onTick: function () {
     tweet();
@@ -42,3 +43,21 @@ function tweet(){
     console.log('Tweet！');
   });
 }
+
+new CronJob({
+  cronTime: '*/5 * * * * *',
+  onTick: function () {
+
+    //var req = http.get('http://localhost:5000', function(res) {
+    var req = http.get('http://localhost:' + app.get('port'), function(res) {
+      res.setEncoding('utf8');
+      res.on('data', function(str) {
+        console.log(str);
+      });
+    });
+
+    console.log('http//localhost:' + app.get('port'));
+
+  },
+  start: true
+});

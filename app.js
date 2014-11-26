@@ -27,7 +27,7 @@ var T = new Twit({
 });
 
 var C = new CronJob({
-  cronTime: '* 0 * * * *',
+  cronTime: '* 0,15,30,45 * * * *',
   onTick: function () {
     tweet();
   },

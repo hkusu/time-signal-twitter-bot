@@ -6,7 +6,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('Hello World!')
+  response.send('This is Twitter-bot application.')
 });
 
 app.listen(app.get('port'), function() {
@@ -24,8 +24,10 @@ var T = new Twit({
   , access_token_secret: 'ZESfr7znD0w6Vy35R3bLEpgzZtjfvBfj8nPylIT7pWs5w'
 });
 
+var cronTime = '* 0,15,30,45 * * * *';
+
 var C = new CronJob({
-  cronTime: '*/10 * * * * *',
+  cronTime: cronTime,
   onTick: function () {
     tweet();
   },
@@ -36,9 +38,7 @@ function tweet(){
   var message = moment().utc().add('h', 9).format("現在、MM月DD日 HH時mm分です。");
   console.log(message);
 
-/*
   T.post('statuses/update', { status: message }, function(err, data, response) {
-    //console.log('Tweet！');
+    console.log('Tweet！');
   });
-*/
 }

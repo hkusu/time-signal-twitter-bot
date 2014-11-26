@@ -1,4 +1,4 @@
-/*
+
 var express = require('express');
 var app = express();
 
@@ -12,11 +12,9 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 });
-*/
 
 var Twit = require('twit');
 var CronJob = require("cron").CronJob;
-//require('date-utils');
 var moment = require('moment');
 
 var T = new Twit({
@@ -27,7 +25,7 @@ var T = new Twit({
 });
 
 var C = new CronJob({
-  cronTime: '* 0,15,30,45 * * * *',
+  cronTime: '*/10 * * * * *',
   onTick: function () {
     tweet();
   },
@@ -36,9 +34,11 @@ var C = new CronJob({
 
 function tweet(){
   var message = moment().utc().add('h', 9).format("現在、MM月DD日 HH時mm分です。");
-  //console.log(message);
+  console.log(message);
 
+/*
   T.post('statuses/update', { status: message }, function(err, data, response) {
     //console.log('Tweet！');
   });
+*/
 }

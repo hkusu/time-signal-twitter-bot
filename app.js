@@ -24,7 +24,7 @@ var T = new Twit({
   , access_token_secret: 'ZESfr7znD0w6Vy35R3bLEpgzZtjfvBfj8nPylIT7pWs5w'
 });
 
-var cronTime = '0 0,15,30,45 * * * *';
+var cronTime = '0 0 * * * *';
 
 var C = new CronJob({
   cronTime: cronTime,

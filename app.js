@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('http');
+//var http = require('http');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +24,7 @@ var T = new Twit({
   , access_token_secret: 'ZESfr7znD0w6Vy35R3bLEpgzZtjfvBfj8nPylIT7pWs5w'
 });
 
-var cronTime = '0 0 * * * *';
+var cronTime = '0 0,30 * * * *';
 
 new CronJob({
   cronTime: cronTime,
@@ -44,12 +44,16 @@ function tweet(){
 }
 
 // Heroku が眠らないように、10分ごとに自身に HTTP リクエストを発行
+// .. と思ったら、自ホストからの ping は意味がないようだ..
+// Uptime Robot (https://uptimerobot.com)等を利用する。
+/*
 new CronJob({
-  cronTime: '0 */10 * * * *',
+  cronTime: '0 *//*
+10 * * * *',
   onTick: function () {
     http.get('http://localhost:' + app.get('port'), function() {
     });
     console.log('Request to http//localhost:' + app.get('port'));
   },
   start: true
-});
+});*/

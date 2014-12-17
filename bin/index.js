@@ -11,9 +11,7 @@ var T = new Twit({
   access_token_secret: app.get('options').token_secret
 });
 
-//var cronTime = '0 0 0-14 * * *';
-//var cronTime = '*/10 * * * * *';
-var cronTime = '0 * * * * *';
+var cronTime = '0 0 0-14 * * *';
 
 new CronJob({
   cronTime: cronTime,

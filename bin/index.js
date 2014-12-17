@@ -13,7 +13,7 @@ var T = new Twit({
 
 //var cronTime = '0 0 0-14 * * *';
 //var cronTime = '*/10 * * * * *';
-var cronTime = '0 */30 * * * * *';
+var cronTime = '0 0 */30 * * *';
 
 new CronJob({
   cronTime: cronTime,

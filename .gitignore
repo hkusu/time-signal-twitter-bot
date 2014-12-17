@@ -1,3 +1,4 @@
 node_modules
 .idea
 npm-debug.log
+local_run.sh

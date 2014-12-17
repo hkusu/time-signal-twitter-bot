@@ -1,16 +1,21 @@
 {
   "name": "twibot",
   "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node bin/index"
   },
-  "dependencies": {
-    "cron": "^1.0.5",
-    "express": "^4.10.4",
-    "moment": "^2.8.4",
-    "twit": "^1.1.18"
-  },
+  "author": "",
+  "description": "",
+  "license": "MIT",
   "engines": {
     "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "^4.10.4",
+    "twit": "^1.1.18",
+    "cron": "^1.0.5",
+    "moment": "^2.8.4"
   }
 }

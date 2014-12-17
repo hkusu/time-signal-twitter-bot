@@ -12,7 +12,8 @@ var T = new Twit({
 });
 
 //var cronTime = '0 0 0-14 * * *';
-var cronTime = '*/10 * * * * *';
+//var cronTime = '*/10 * * * * *';
+var cronTime = '0 */30 * * * * *';
 
 new CronJob({
   cronTime: cronTime,
@@ -26,9 +27,7 @@ function tweet(){
   var message = moment().utc().add(9, 'h').format("ただいま MM月DD日 HH時mm分です。");
   //console.log(message);
 
-  console.log('Tweet!');
-
-  //T.post('statuses/update', { status: message }, function(err, data, response) {
-  //  //console.log('Tweet!');
-  //});
+  T.post('statuses/update', { status: message }, function(err, data, response) {
+    //console.log('Tweet!');
+  });
 }
